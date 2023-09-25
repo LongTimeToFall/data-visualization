@@ -650,12 +650,14 @@ function map() {
         }]
     }
     myChart.setOption(option)
+
+    // 使用刚指定的配置项和数据显示图表。
+    window.addEventListener("resize", function () {
+        myChart.resize();
+    });
 }
 
-// 使用刚指定的配置项和数据显示图表。
-window.addEventListener("resize", function () {
-    myChart.resize();
-});
+
 map()
 
 // 无线网络大数据采集终端/模块--监控点  现网规模

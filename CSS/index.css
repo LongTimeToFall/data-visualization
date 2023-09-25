@@ -81,11 +81,10 @@ body {
 }
 
 /* 四个角落的发光部分 */
-/* .pry {
+.pry {
     position: absolute;
     width: 100%;
     height: 100%;
-    z-index: 100;
 }
 
 .pry i:nth-child(1) {
@@ -166,7 +165,7 @@ body {
     bottom: -3px;
     background-color: #4788fb;
     box-shadow: 0px 0px 2px #4788fb;
-} */
+}
 
 /* 左上 */
 .contentLeftTop {
@@ -192,11 +191,11 @@ body {
 }
 
 .design {
-    height: 220px;
+    height: 230px;
 }
 
 .distribute {
-    height: 230px;
+    height: 240px;
     margin: 5px 0;
     padding: 5px 0;
     border-top: 1px solid #1a3866;
@@ -204,7 +203,7 @@ body {
 }
 
 .statistics {
-    height: 200px;
+    height: 220px;
 }
 
 /* 无线网络大数据采集终端/模块--监控点 */
@@ -221,18 +220,18 @@ body {
 
 .form-center {
     width: 100%;
-    height: 240px;
+    height: 220px;
 }
 
 .map {
     width: 100%;
-    height: 560px;
+    height: 555px;
 }
 
 .netWork {
     display: inline-block;
     width: 220px;
-    height: 160px;
+    height: 155px;
     /* background-color: antiquewhite; */
     margin: 0 20px;
 }
@@ -247,7 +246,6 @@ body {
 /* 右上 */
 .contentRightTop {
     width: 100%;
-    height: 300px;
     margin-bottom: 32px;
     position: relative;
     border: 1px solid #2c58a6;
@@ -264,7 +262,7 @@ body {
 
 .contentRightTop .caution div {
     width: 25%;
-    height: 85px;
+    height: 80px;
 }
 
 .contentRightTop .faultDiagnosis {
@@ -278,8 +276,61 @@ body {
 
 /* 右下 */
 .contentRightbottom {
-    height: 539px;
+    height: 679px;
     position: relative;
     border: 1px solid #2c58a6;
     box-shadow: 0px 0px 6px #4788fb;
+}
+
+/* 表单 */
+.centertable {
+    width: 100%;
+    position: relative;
+}
+
+.centerdata-th {
+    font-size: 15px;
+    font-weight: 600;
+    color: #61d2f7;
+    text-align: center;
+    white-space: nowrap;
+    padding: 10px 20px;
+}
+
+.centertable-td>td {
+    color: #fff;
+    font-size: 12px;
+    text-align: center;
+    padding: 4px 8px;
+}
+
+.centertable-td2>td {
+    color: #fff;
+    font-size: 12px;
+    text-align: center;
+    padding: 8px;
+}
+
+#produce table td {
+    text-align: center;
+    border: 1px solid #069;
+    padding: 4px 0px;
+}
+
+#produce {
+    color: #B7E2FF;
+    margin-top: 20px;
+}
+
+#produce table {
+    width: 100%;
+    font-size: 12px;
+}
+
+.row1 {
+    font-size: 13px;
+    font-weight: bold;
+    color: #fff;
+    background-color: #14181c;
+    box-shadow: -10px 0px 15px #2C58A6 inset, 10px 0px 15px #2C58A6 inset
 }
