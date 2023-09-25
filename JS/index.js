@@ -50,7 +50,6 @@ function project() {
             itemHeight: 8, // 设置高度
             itemGap: 10,// 设置间距
             padding: [40, 10, 15, 20]    // [5, 10, 15, 20]
-
         },
         dataset: {
             source: [
@@ -67,19 +66,15 @@ function project() {
             {
                 top: '22%',
                 bottom: '20%',
-                // left: '10%',
-                // right:'5%'
             },
         ],
         series: [
-            // These series are in the first grid.
             { type: 'bar', seriesLayoutBy: 'row', barWidth: 14, barGap: '10%', },
             { type: 'bar', seriesLayoutBy: 'row', barWidth: 14, barGap: '10%', },
             { type: 'bar', seriesLayoutBy: 'row', barWidth: 14, barGap: '10%', },
             { type: 'bar', seriesLayoutBy: 'row', barWidth: 14, barGap: '10%', },
             { type: 'bar', seriesLayoutBy: 'row', barWidth: 14, barGap: '10%', },
             { type: 'bar', seriesLayoutBy: 'row', barWidth: 14, barGap: '10%', },
-            // These series are in the second grid.
         ]
     };
     myChart.setOption(option)
@@ -243,6 +238,12 @@ function faultDiagnosis() {
             },
             left: 'center'
         },
+        grid: {
+            top: '10%',
+            right: '5%',
+            left: '10%',
+            bottom: '30%'
+        },
         xAxis: {
             type: 'category',
             data: ['参数', '延伸系统', '老旧隐患', '设备', '传输/线路', '动力'],
@@ -257,13 +258,18 @@ function faultDiagnosis() {
                 textStyle: {
                     fontSize: 10
                 },
-            }
+            },
         },
         yAxis: {
             type: 'value',
             min: 0,
             max: 600,
             splitNumber: 4,
+            splitLine: {
+                lineStyle: {
+                    color: '#272456'
+                }
+            },
             axisLabel: {
                 formatter: '{value}',
                 color: '#fff',
@@ -298,26 +304,259 @@ function faultDiagnosis() {
     myChart.setOption(option)
 }
 faultDiagnosis()
+
+// 网络设计-在网现状
+function desiagn() {
+    const desi = document.querySelector('.design')
+    const myChart = echarts.init(desi)
+    const option = {
+        title: [
+            {
+                subtext: '在网分布系统现状',
+                left: '15%',
+                top: '5%'
+            }, {
+                subtext: '在网直放站现状',
+                right: '15%',
+                top: '5%'
+            }
+        ],
+        tooltip: {
+            trigger: 'item',
+            formatter: '{a} <br/>{b} : {c} ({d}%)'
+        },
+        legend: [{
+            orient: 'vertical',
+            // x: 'left',
+            itemWidth: 8,  // 设置宽度
+            itemHeight: 8, // 设置高度
+            textStyle: {
+                color: "#fff",
+                fontSize: 10
+            },
+            left: '10%',  //图例距离左的距离
+            top: '24%',
+            data: ['已归档站点', '已拆除站点', '', '在建站点', '改造站点'],//图例换行
+
+        }, {
+            orient: 'vertical',
+            // x: 'left',
+            itemWidth: 8,  // 设置宽度
+            itemHeight: 8, // 设置高度
+            textStyle: {
+                color: "#fff",
+                fontSize: 10
+            },
+            left: '60%',  //图例距离左的距离
+            top: '24%',
+            data: ['干线放大器', '模拟直放站', '', '无线直放站', '数字直放站'],//图例换行
+
+        }],
+        series: [
+            {
+                name: '在网分布系统现状',
+                type: 'pie',
+                radius: [30, 55],
+                center: ['25%', '70%'],
+                label: {
+                    normal: {
+                        show: true,
+                        formatter: '{d}%',       //显示的内容
+                        position: 'inner',
+                        textStyle: {
+                            fontSize: '10',
+                            color: '#fff'
+                        }
+                    },
+                },
+                data: [
+                    { value: 70, name: '已归档站点' },
+                    { value: 5, name: '已拆除站点' },
+                    { value: 10, name: '在建站点' },
+                    { value: 15, name: '改造站点' }
+                ]
+            },
+            {
+                name: '在网直放站现状',
+                type: 'pie',
+                radius: [30, 55],
+                label: {
+                    normal: {
+                        show: true,
+                        formatter: '{d}%',       //显示的内容
+                        position: 'inner',
+                        textStyle: {
+                            fontSize: '10',
+                            color: '#fff'
+                        }
+                    },
+                },
+                center: ['75%', '70%'],
+                data: [
+                    { value: 10, name: '干线放大器' },
+                    { value: 5, name: '无线直放站' },
+                    { value: 15, name: '模拟直放站' },
+                    { value: 70, name: '数字直放站' }
+                ]
+            }
+        ]
+    };
+    myChart.setOption(option)
+}
+desiagn()
+// 网络设计-各市分布现状
+function distribute() {
+    const leftBottom = document.querySelector('.distribute')
+    const myChart = echarts.init(leftBottom)
+    const option = {
+        title: {
+            text: '分地市分布系统现状',
+            textStyle: {
+                fontSize: 12,
+                color: '#fff',
+                fontWeight: 'normal',
+            },
+            left: 'center'
+        },
+        tooltip: {
+            trigger: 'axis'
+        },
+        legend: {
+            data: ['已归档站点数', '已拆除站点数', '在建站点', '改进站点'],
+            textStyle: {
+                fontSize: 10,
+                color: '#fff'
+            },
+            top: '10%'
+        },
+        grid: {
+            left: '3%',
+            right: '4%',
+            bottom: '3%',
+            containLabel: true
+        },
+        xAxis: {
+            type: 'category',
+            boundaryGap: false,
+            data: ['杭州', '衢州', '舟山', '宁波', '温州', '嘉兴', '金华', '绍兴', '丽水', '台州', '湖州'],
+            splitLine: {
+                show: false
+            },
+            axisLabel: {
+                textStyle: {
+                    fontSize: 10
+                }
+            },
+            axisLine: {
+                lineStyle: {
+                    color: '#fff'
+                }
+            }
+        },
+        yAxis: {
+            type: 'value',
+            axisLabel: {
+                textStyle: {
+                    fontSize: 10
+                }
+            },
+            splitLine: {
+                show: false
+            },
+            axisLine: {
+                lineStyle: {
+                    color: '#fff'
+                }
+            }
+        },
+        series: [
+            {
+                name: '已归档站点数',
+                type: 'line',
+                data: [4550, 1260, 710, 3970, 3467, 3400, 2989, 2019, 1800, 1802, 1780]
+            },
+            {
+                name: '已拆除站点数',
+                type: 'line',
+                data: [905, 1, 1, 230, 480, 400, 20, 0, 0, 0, 0]
+            },
+            {
+                name: '在建站点',
+                type: 'line',
+                data: [600, 450, 140, 600, 520, 450, 490, 300, 0, 500, 0]
+            },
+            {
+                name: '改造站点',
+                type: 'line',
+                data: [700, 490, 150, 660, 520, 450, 490, 300, 0, 500, 0]
+            }
+        ],
+        color: ['#FF4949', '#FFA74D', '#77cd63', '#44AFF0',],
+    };
+    myChart.setOption(option)
+}
+distribute()
 // 网络设计-材料数量统计
 function statistics() {
     const leftBottom = document.querySelector('.statistics')
     const myChart = echarts.init(leftBottom)
     const option = {
-        dataset: {
-            source: [
-                ['product', '2015', '2016', '2017'],
-                ['Matcha Latte', 43.3, 85.8, 93.7],
-                ['Milk Tea', 83.1, 73.4, 55.1],
-                ['Cheese Cocoa', 86.4, 65.2, 82.5],
-                ['Walnut Brownie', 72.4, 53.9, 39.1]
-            ]
+        title: {
+            text: '材料数量统计',
+            textStyle: {
+                fontSize: 12,
+                color: '#fff',
+                fontWeight: 'normal',
+            },
+            left: 'center'
         },
-        xAxis: { type: 'category' },
-        yAxis: {},
-        series: [{ type: 'bar' }, { type: 'bar' }, { type: 'bar' }]
+        tooltip: {
+            trigger: 'axis'
+        },
+        grid: {
+            top: '20%',
+            left: '3%',
+            right: '3%',
+            bottom: '1%',
+            containLabel: true
+        },
+        xAxis: {
+            type: 'category',
+            data: ['合路器', '功分器', '藕合器', '全向吸顶天线', '定向吸顶天线', '板状天线', '美化天线'],
+            axisLine: {
+                lineStyle: {
+                    color: '#272456'
+                }
+            },
+            axisLabel: {
+                margin: 10,
+                color: '#fff',
+                textStyle: {
+                    fontSize: 10
+                },
+            },
+        },
+        yAxis: {
+            type: 'value',
+            splitNumber: 4,
+            axisLabel: {
+                formatter: '{value}',
+                color: '#fff',
+                interval: 0,
+                textStyle: {
+                    fontSize: 10
+                },
+            },
+        },
+        series: [{
+            name: '直接访问',
+            type: 'bar',
+            barWidth: '40%',
+            barCategoryGap: '5%',
+            data: ["37077", "1404960", "2012952", "2593964", "162313", "648970", "35953", "625"]
+        }],
+        color: '#38b3f1'
     };
     myChart.setOption(option)
 }
 statistics()
-
-
