@@ -188,6 +188,7 @@ body {
     position: relative;
     border: 1px solid #2c58a6;
     box-shadow: 0px 0px 6px #4788fb;
+    padding-bottom: 10px;
 }
 
 .design {
@@ -206,13 +207,41 @@ body {
     height: 200px;
 }
 
-/* 中间 */
+/* 无线网络大数据采集终端/模块--监控点 */
 .center {
-    height: 872px;
     margin: 0 25px;
     position: relative;
     border: 1px solid #2c58a6;
     box-shadow: 0px 0px 6px #4788fb;
+}
+
+.centerform {
+    width: 100%;
+}
+
+.form-center {
+    width: 100%;
+    height: 240px;
+}
+
+.map {
+    width: 100%;
+    height: 560px;
+}
+
+.netWork {
+    display: inline-block;
+    width: 220px;
+    height: 160px;
+    /* background-color: antiquewhite; */
+    margin: 0 20px;
+}
+
+.schedule {
+    display: inline-block;
+    width: 410px;
+    height: 160px;
+    /* background-color: skyblue; */
 }
 
 /* 右上 */

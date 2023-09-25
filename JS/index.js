@@ -3,9 +3,6 @@ function project() {
     const contentLeftTop = document.querySelector('.LeftTop')
     const myChart = echarts.init(contentLeftTop)
     const option = {
-        legend: {
-            data: ['GSM', 'WCDMA', 'LTE', 'WLAN', 'NB-LOT', 'LORA']
-        },
         tooltip: {},
         color: ['#ef5f2b', '#4a6ac4', '#77cd63', '#a325c0', '#369ebc', '#e2a83f'],
         xAxis: [
@@ -224,6 +221,7 @@ function maintain() {
     myChart8.setOption(option)
 }
 maintain()
+
 // 网络维护-原因
 function faultDiagnosis() {
     const rightTOP = document.querySelector('.faultDiagnosis')
@@ -404,6 +402,7 @@ function desiagn() {
     myChart.setOption(option)
 }
 desiagn()
+
 // 网络设计-各市分布现状
 function distribute() {
     const leftBottom = document.querySelector('.distribute')
@@ -496,6 +495,7 @@ function distribute() {
     myChart.setOption(option)
 }
 distribute()
+
 // 网络设计-材料数量统计
 function statistics() {
     const leftBottom = document.querySelector('.statistics')
@@ -560,3 +560,241 @@ function statistics() {
     myChart.setOption(option)
 }
 statistics()
+
+// 无线网络大数据采集终端/模块--监控点  地图
+function map() {
+    const mao = document.querySelector('.map')
+    const myChart = echarts.init(mao)
+    const option = {
+        backgroundColor: '',//设置无背景色
+        series: [{
+            type: 'map',
+            mapType: 'zhejiang',
+            roam: true,
+            label: {
+                normal: {
+                    show: true,
+                    textStyle: {
+                        color: '#fff'
+                    }
+                },
+                emphasis: {
+                    textStyle: {
+                        color: '#fff'
+                    }
+                }
+            },
+            itemStyle: {
+                normal: {
+                    borderColor: 'rgba(147, 235, 248, 1)',
+                    borderWidth: 1,
+
+                    areaColor: {
+                        type: 'radial',
+                        x: 0.5,
+                        y: 0.5,
+                        r: 0.8,
+                        colorStops: [{
+                            offset: 0,
+                            color: 'rgba(175,238,238, 0)'
+                        }, {
+                            offset: 1,
+                            color: 'rgba(47,79,79, .1)'
+                        }],
+                        globalCoord: false
+                    },
+                    shadowColor: 'rgba(128, 217, 248, 1)',
+                    shadowOffsetX: -2,
+                    shadowOffsetY: 2,
+                    shadowBlur: 10
+                },
+                emphasis: {
+                    areaColor: '#389BB7',
+                    borderWidth: 0
+                }
+            },
+            animation: false,
+            data: [{
+                name: '丽水',
+
+            }, {
+                name: '杭州',
+
+            }, {
+                name: '温州',
+
+            }, {
+                name: '宁波',
+
+            }, {
+                name: '舟山',
+            }, {
+                name: '台州',
+
+            }, {
+                name: '金华',
+
+            }, {
+                name: '衢州',
+
+            }, {
+                name: '绍兴',
+
+            }, {
+                name: '嘉兴',
+
+            }, {
+                name: '湖州',
+
+            }]
+        }]
+    }
+    myChart.setOption(option)
+}
+
+// 使用刚指定的配置项和数据显示图表。
+window.addEventListener("resize", function () {
+    myChart.resize();
+});
+map()
+
+// 无线网络大数据采集终端/模块--监控点  现网规模
+function netWork() {
+    const mao = document.querySelector('.netWork')
+    const myChart = echarts.init(mao)
+    const option = {
+        title: {
+            text: '在网分布系统现状', left: 'center',
+            textStyle: {
+                color: '#fff',
+                fontStyle: 'normal',
+                fontWeight: 'normal',
+                fontSize: 14,
+                textAlign: 'center'
+            },
+        },
+        color: ['#218BB4', '#5AA949', '#7121B4', '#C23531'],
+        tooltip: {
+            trigger: 'item',
+            formatter: '{a} <br/>{b} : {c} ({d}%)'
+        },
+        legend: {
+            itemWidth: 8,
+            itemHeight: 8,
+            textStyle: {
+                color: "#fff",
+                fontSize: 10
+            },
+            left: 'center',
+            top: '24%',
+            data: ['宏站', '室分', '微站']
+        },
+        series: {
+            name: '在网分布系统现状',
+            type: 'pie',
+            radius: [20, 45],
+            center: ['50%', '65%'],
+            label: {
+                normal: {
+                    show: true,
+                    formatter: '{d}%',
+                    position: 'inner',
+                    textStyle: {
+                        fontSize: '10',
+                        color: '#fff'
+                    }
+                },
+            },
+            data: [
+                { value: 60, name: '宏站' },
+                { value: 30, name: '室分' },
+                { value: 10, name: '微站' },
+            ]
+        }
+    };
+    myChart.setOption(option)
+}
+netWork()
+
+// 无线网络大数据采集终端/模块--监控点  档期规律
+function schedule() {
+    const mao = document.querySelector('.schedule')
+    const myChart = echarts.init(mao)
+    const option = {
+        title: {
+            text: '档期规模', left: 'center',
+            textStyle: {
+                color: '#fff',
+                fontStyle: 'normal',
+                fontWeight: 'normal',
+                fontSize: 14,
+                textAlign: 'center'
+            },
+        },
+        tooltip: {},
+        color: ['#ef5f2b', '#4a6ac4', '#77cd63', '#a325c0', '#369ebc', '#e2a83f'],
+        xAxis: [
+            {
+                type: 'category',
+                // prettier-ignore
+                axisLine: {
+                    lineStyle: {
+                        color: "#fff",
+                    }
+                },
+                axisLabel: {   //x轴文字样式
+                    textStyle: {
+                        fontSize: 13
+                    }
+                },
+            }
+        ],
+        yAxis: [
+            {
+                type: 'value',
+                axisLine: {
+                    lineStyle: {
+                        color: "#fff",
+                    }
+                },
+                axisLabel: {   //x轴文字样式
+                    textStyle: {
+                        fontSize: 13
+                    }
+                },
+            }
+        ],
+        legend: {
+            data: ['宏站', '室分', '微站'],
+            textStyle: {
+                color: "#fff",
+                fontSize: 10
+            },
+            icon: "circle",   //  这个字段控制形状  类型包括 circle，rect ，roundRect，triangle，diamond，pin，arrow，none
+            itemWidth: 8,  // 设置宽度
+            itemHeight: 8, // 设置高度
+            itemGap: 10,// 设置间距
+            padding: [40, 10, 15, 20]    // [5, 10, 15, 20]
+        },
+        dataset: {
+            source: [
+                ['x', '当前规模数', '当前拍照数', '当前在网数'],
+                ['宏站', 1250, 1400, 1100],
+                ['室分', 750, 760, 450],
+                ['微站', 980, 980, 580]
+            ]
+        },
+        grid: [
+            {
+                bottom: '20%',
+            },
+        ],
+        series: [
+            { type: 'bar', seriesLayoutBy: 'row', barWidth: 14, barGap: '10%', },
+            { type: 'bar', seriesLayoutBy: 'row', barWidth: 14, barGap: '10%', },
+            { type: 'bar', seriesLayoutBy: 'row', barWidth: 14, barGap: '10%', },
+        ]
+    }
+    myChart.setOption(option)
+}
+schedule()
