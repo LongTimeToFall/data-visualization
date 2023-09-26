@@ -8,7 +8,12 @@
     padding: 0 20px;
 }
 
+html {
+    height: 100%;
+}
+
 body {
+    height: 100%;
     background-image: url(../image/true.png);
     background-size: 100% 100%;
     color: #fff;
@@ -18,7 +23,7 @@ body {
 .head {
     background-image: url(../image/title.png);
     background-size: 100% 100%;
-    height: 80px;
+    height: 8%;
 }
 
 .head h1 {
@@ -26,19 +31,20 @@ body {
     font-weight: 400;
     font-size: 0.45rem;
     height: 100%;
-    line-height: 80px;
+    line-height: 200%;
 }
 
 /* 内容 */
 .content {
     display: flex;
-    padding-top: 5px;
+    padding-top: 0.4%;
     position: relative;
+    height: 90%;
 }
 
 /* 布局 */
 .left {
-    flex: 3.5;
+    flex: 3;
 }
 
 .right {
@@ -83,6 +89,7 @@ body {
 /* 四个角落的发光部分 */
 .pry {
     position: absolute;
+
     width: 100%;
     height: 100%;
 }
@@ -167,11 +174,14 @@ body {
     box-shadow: 0px 0px 2px #4788fb;
 }
 
+.empty {
+    height: 3%;
+}
+
 /* 左上 */
 .contentLeftTop {
     width: 100%;
-    height: 230px;
-    margin-bottom: 32px;
+    height: 23%;
     position: relative;
     border: 1px solid #2c58a6;
     box-shadow: 0px 0px 6px #4788fb;
@@ -184,18 +194,27 @@ body {
 
 /* 左下 */
 .contentLeftbottom {
+    width: 100%;
+    height: 74%;
     position: relative;
     border: 1px solid #2c58a6;
     box-shadow: 0px 0px 6px #4788fb;
     padding-bottom: 10px;
 }
 
+.leftBottom {
+    width: 100%;
+    height: 100%;
+}
+
 .design {
-    height: 230px;
+    width: 100%;
+    height: 33%;
 }
 
 .distribute {
-    height: 240px;
+    width: 100%;
+    height: 34%;
     margin: 5px 0;
     padding: 5px 0;
     border-top: 1px solid #1a3866;
@@ -203,11 +222,14 @@ body {
 }
 
 .statistics {
-    height: 220px;
+    width: 100%;
+    height: 32%;
 }
 
 /* 无线网络大数据采集终端/模块--监控点 */
 .center {
+    width: 100%;
+    height: 100%;
     margin: 0 25px;
     position: relative;
     border: 1px solid #2c58a6;
@@ -216,37 +238,48 @@ body {
 
 .centerform {
     width: 100%;
+    height: 100%;
 }
 
 .form-center {
     width: 100%;
-    height: 220px;
+    height: 22%;
 }
 
 .map {
     width: 100%;
-    height: 555px;
+    height: 56%;
 }
 
 .netWork {
+    position: absolute;
+    left: 0;
     display: inline-block;
-    width: 220px;
-    height: 155px;
+    width: 33%;
+    height: 100%;
     /* background-color: antiquewhite; */
-    margin: 0 20px;
 }
 
 .schedule {
+    position: absolute;
+    right: 0;
     display: inline-block;
-    width: 410px;
-    height: 160px;
+    width: 60%;
+    height: 100%;
     /* background-color: skyblue; */
+}
+
+.cen {
+    width: 100%;
+    height: 16%;
+    position: relative;
+    justify-content: space-between;
 }
 
 /* 右上 */
 .contentRightTop {
     width: 100%;
-    margin-bottom: 32px;
+    height: 29%;
     position: relative;
     border: 1px solid #2c58a6;
     box-shadow: 0px 0px 6px #4788fb;
@@ -254,6 +287,7 @@ body {
 }
 
 .contentRightTop .caution {
+    width: 100%;
     height: 63%;
     display: flex;
     flex-wrap: wrap;
@@ -266,6 +300,7 @@ body {
 }
 
 .contentRightTop .faultDiagnosis {
+    width: 100%;
     height: 100px;
 }
 
@@ -276,7 +311,8 @@ body {
 
 /* 右下 */
 .contentRightbottom {
-    height: 679px;
+    width: 100%;
+    height: 68%;
     position: relative;
     border: 1px solid #2c58a6;
     box-shadow: 0px 0px 6px #4788fb;
@@ -314,7 +350,7 @@ body {
 #produce table td {
     text-align: center;
     border: 1px solid #069;
-    padding: 4px 0px;
+    padding: 1% 0px;
 }
 
 #produce {
@@ -333,4 +369,8 @@ body {
     color: #fff;
     background-color: #14181c;
     box-shadow: -10px 0px 15px #2C58A6 inset, 10px 0px 15px #2C58A6 inset
+}
+
+.row1td {
+    padding: 2px 0px;
 }

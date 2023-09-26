@@ -1,3 +1,16 @@
+function fontSize(res) {
+    let docEl = document.documentElement,
+        clientWidth =
+            window.innerWidth ||
+            document.documentElement.clientWidth ||
+            document.body.clientWidth;
+    if (!clientWidth) return;
+    // 此处的3840 为设计稿的宽度，记得修改！
+    let fontSize = clientWidth / 1920;
+    return res * fontSize;
+}
+
+
 // 网络规划区域
 function project() {
     const contentLeftTop = document.querySelector('.LeftTop')
@@ -16,7 +29,7 @@ function project() {
                 },
                 axisLabel: {   //x轴文字样式
                     textStyle: {
-                        fontSize: 13
+                        fontSize: fontSize(13)
                     }
                 },
             }
@@ -31,7 +44,7 @@ function project() {
                 },
                 axisLabel: {   //x轴文字样式
                     textStyle: {
-                        fontSize: 13
+                        fontSize: fontSize(13)
                     }
                 },
             }
@@ -40,13 +53,13 @@ function project() {
             data: ['GSM', 'WCDMA', 'LTE', 'WLAN', 'NB-LOT', 'LORA'],
             textStyle: {
                 color: "#fff",
-                fontSize: 10
+                fontSize: fontSize(10)
             },
             icon: "circle",   //  这个字段控制形状  类型包括 circle，rect ，roundRect，triangle，diamond，pin，arrow，none
-            itemWidth: 8,  // 设置宽度
-            itemHeight: 8, // 设置高度
-            itemGap: 10,// 设置间距
-            padding: [40, 10, 15, 20]    // [5, 10, 15, 20]
+            itemWidth: fontSize(8),  // 设置宽度
+            itemHeight: fontSize(8), // 设置高度
+            itemGap: fontSize(10),// 设置间距
+            padding: [fontSize(40), fontSize(10), fontSize(15), fontSize(20)]    // [5, 10, 15, 20]
         },
         dataset: {
             source: [
@@ -62,7 +75,8 @@ function project() {
         grid: [
             {
                 top: '22%',
-                bottom: '20%',
+                bottom: '15%',
+                left: '10%',
             },
         ],
         series: [
@@ -75,6 +89,10 @@ function project() {
         ]
     };
     myChart.setOption(option)
+
+    window.addEventListener("resize", function () {
+        myChart.resize();
+    })
 }
 project()
 
@@ -96,7 +114,7 @@ function maintain() {
     const myChart6 = echarts.init(six)
     const myChart7 = echarts.init(seven)
     const myChart8 = echarts.init(eight)
-    const option = {
+    const option1 = {
         tooltip: {
             formatter: '{a} <br/>{b} : {c}%'
         },
@@ -170,55 +188,573 @@ function maintain() {
             }
         ]
     }
+    const option2 = {
+        tooltip: {
+            formatter: '{a} <br/>{b} : {c}%'
+        },
+        series: [
+            {
+                name: '指标',
+                type: 'gauge',
+                min: 0,
+                max: 1000,
+                // 分割段数，默认为5
+                splitNumber: 10,
+                radius: '68%',
+                // 仪表位置
+                center: ["50%", "60%"],
+                // 轴样式
+                axisLine: {
+                    // 属性lineStyle控制线条样式
+                    lineStyle: {
+                        // 颜色
+                        color: [[0.2, '#228b22'], [0.8, '#48b'], [1, '#ff4500']],
+                        // 宽度
+                        width: 2,
+                        // 发光
+                        shadowColor: '#fff',
+                        // 扩散
+                        shadowBlur: 10
+                    }
+                },
+                // 坐标轴内线
+                axisTick: {
+                    splitNumber: 5,
+                    length: 6,
+                    lineStyle: {
+                        color: 'auto'
+                    }
+                },
+                // 指针数值不显示
+                axisLabel: {
+                    show: false
+                },
+                splitLine: {
+                    length: 2,
+                    lineStyle: {
+                        width: 2,
+                        color: '#fff',
+                        shadowColor: '#fff',
+                        shadowBlur: 10
+                    }
+                },
+                pointer: {
+                    width: 2
+                },
+                title: {
+                    offsetCenter: [0, '100%'],
+                    textStyle: {
+                        fontWeight: 'bolder',
+                        fontSize: 10,
+                        color: '#fff',
+                    }
+                },
+                detail: {
+                    formatter: '{value}',
+                    offsetCenter: [0, '30%'],
+                    textStyle: {
+                        fontWeight: 'bolder',
+                        fontSize: 14,
+                        color: '#fff'
+                    }
+                },
+                data: [{ value: 242, name: '数字型号异常告警' }]
+            }
+        ]
+    }
+    const option3 = {
+        tooltip: {
+            formatter: '{a} <br/>{b} : {c}%'
+        },
+        series: [
+            {
+                name: '指标',
+                type: 'gauge',
+                min: 0,
+                max: 1000,
+                // 分割段数，默认为5
+                splitNumber: 10,
+                radius: '68%',
+                // 仪表位置
+                center: ["50%", "60%"],
+                // 轴样式
+                axisLine: {
+                    // 属性lineStyle控制线条样式
+                    lineStyle: {
+                        // 颜色
+                        color: [[0.2, '#228b22'], [0.8, '#48b'], [1, '#ff4500']],
+                        // 宽度
+                        width: 2,
+                        // 发光
+                        shadowColor: '#fff',
+                        // 扩散
+                        shadowBlur: 10
+                    }
+                },
+                // 坐标轴内线
+                axisTick: {
+                    splitNumber: 5,
+                    length: 6,
+                    lineStyle: {
+                        color: 'auto'
+                    }
+                },
+                // 指针数值不显示
+                axisLabel: {
+                    show: false
+                },
+                splitLine: {
+                    length: 2,
+                    lineStyle: {
+                        width: 2,
+                        color: '#fff',
+                        shadowColor: '#fff',
+                        shadowBlur: 10
+                    }
+                },
+                pointer: {
+                    width: 2
+                },
+                title: {
+                    offsetCenter: [0, '100%'],
+                    textStyle: {
+                        fontWeight: 'bolder',
+                        fontSize: 10,
+                        color: '#fff',
+                    }
+                },
+                detail: {
+                    formatter: '{value}',
+                    offsetCenter: [0, '30%'],
+                    textStyle: {
+                        fontWeight: 'bolder',
+                        fontSize: 14,
+                        color: '#fff'
+                    }
+                },
+                data: [{ value: 62, name: '监控无响应告警' }]
+            }
+        ]
+    }
+    const option4 = {
+        tooltip: {
+            formatter: '{a} <br/>{b} : {c}%'
+        },
+        series: [
+            {
+                name: '指标',
+                type: 'gauge',
+                min: 0,
+                max: 1000,
+                // 分割段数，默认为5
+                splitNumber: 10,
+                radius: '68%',
+                // 仪表位置
+                center: ["50%", "60%"],
+                // 轴样式
+                axisLine: {
+                    // 属性lineStyle控制线条样式
+                    lineStyle: {
+                        // 颜色
+                        color: [[0.2, '#228b22'], [0.8, '#48b'], [1, '#ff4500']],
+                        // 宽度
+                        width: 2,
+                        // 发光
+                        shadowColor: '#fff',
+                        // 扩散
+                        shadowBlur: 10
+                    }
+                },
+                // 坐标轴内线
+                axisTick: {
+                    splitNumber: 5,
+                    length: 6,
+                    lineStyle: {
+                        color: 'auto'
+                    }
+                },
+                // 指针数值不显示
+                axisLabel: {
+                    show: false
+                },
+                splitLine: {
+                    length: 2,
+                    lineStyle: {
+                        width: 2,
+                        color: '#fff',
+                        shadowColor: '#fff',
+                        shadowBlur: 10
+                    }
+                },
+                pointer: {
+                    width: 2
+                },
+                title: {
+                    offsetCenter: [0, '100%'],
+                    textStyle: {
+                        fontWeight: 'bolder',
+                        fontSize: 10,
+                        color: '#fff',
+                    }
+                },
+                detail: {
+                    formatter: '{value}',
+                    offsetCenter: [0, '30%'],
+                    textStyle: {
+                        fontWeight: 'bolder',
+                        fontSize: 14,
+                        color: '#fff'
+                    }
+                },
+                data: [{ value: 256, name: '接收电平强度告警' }]
+            }
+        ]
+    }
+    const option5 = {
+        tooltip: {
+            formatter: '{a} <br/>{b} : {c}%'
+        },
+        series: [
+            {
+                name: '指标',
+                type: 'gauge',
+                min: 0,
+                max: 1000,
+                // 分割段数，默认为5
+                splitNumber: 10,
+                radius: '68%',
+                // 仪表位置
+                center: ["50%", "60%"],
+                // 轴样式
+                axisLine: {
+                    // 属性lineStyle控制线条样式
+                    lineStyle: {
+                        // 颜色
+                        color: [[0.2, '#228b22'], [0.8, '#48b'], [1, '#ff4500']],
+                        // 宽度
+                        width: 2,
+                        // 发光
+                        shadowColor: '#fff',
+                        // 扩散
+                        shadowBlur: 10
+                    }
+                },
+                // 坐标轴内线
+                axisTick: {
+                    splitNumber: 5,
+                    length: 6,
+                    lineStyle: {
+                        color: 'auto'
+                    }
+                },
+                // 指针数值不显示
+                axisLabel: {
+                    show: false
+                },
+                splitLine: {
+                    length: 2,
+                    lineStyle: {
+                        width: 2,
+                        color: '#fff',
+                        shadowColor: '#fff',
+                        shadowBlur: 10
+                    }
+                },
+                pointer: {
+                    width: 2
+                },
+                title: {
+                    offsetCenter: [0, '100%'],
+                    textStyle: {
+                        fontWeight: 'bolder',
+                        fontSize: 10,
+                        color: '#fff',
+                    }
+                },
+                detail: {
+                    formatter: '{value}',
+                    offsetCenter: [0, '30%'],
+                    textStyle: {
+                        fontWeight: 'bolder',
+                        fontSize: 14,
+                        color: '#fff'
+                    }
+                },
+                data: [{ value: 53, name: '光收发告警' }]
+            }
+        ]
+    }
+    const option6 = {
+        tooltip: {
+            formatter: '{a} <br/>{b} : {c}%'
+        },
+        series: [
+            {
+                name: '指标',
+                type: 'gauge',
+                min: 0,
+                max: 1000,
+                // 分割段数，默认为5
+                splitNumber: 10,
+                radius: '68%',
+                // 仪表位置
+                center: ["50%", "60%"],
+                // 轴样式
+                axisLine: {
+                    // 属性lineStyle控制线条样式
+                    lineStyle: {
+                        // 颜色
+                        color: [[0.2, '#228b22'], [0.8, '#48b'], [1, '#ff4500']],
+                        // 宽度
+                        width: 2,
+                        // 发光
+                        shadowColor: '#fff',
+                        // 扩散
+                        shadowBlur: 10
+                    }
+                },
+                // 坐标轴内线
+                axisTick: {
+                    splitNumber: 5,
+                    length: 6,
+                    lineStyle: {
+                        color: 'auto'
+                    }
+                },
+                // 指针数值不显示
+                axisLabel: {
+                    show: false
+                },
+                splitLine: {
+                    length: 2,
+                    lineStyle: {
+                        width: 2,
+                        color: '#fff',
+                        shadowColor: '#fff',
+                        shadowBlur: 10
+                    }
+                },
+                pointer: {
+                    width: 2
+                },
+                title: {
+                    offsetCenter: [0, '100%'],
+                    textStyle: {
+                        fontWeight: 'bolder',
+                        fontSize: 10,
+                        color: '#fff',
+                    }
+                },
+                detail: {
+                    formatter: '{value}',
+                    offsetCenter: [0, '30%'],
+                    textStyle: {
+                        fontWeight: 'bolder',
+                        fontSize: 14,
+                        color: '#fff'
+                    }
+                },
+                data: [{ value: 48, name: '功放过温告警' }]
+            }
+        ]
+    }
+    const option7 = {
+        tooltip: {
+            formatter: '{a} <br/>{b} : {c}%'
+        },
+        series: [
+            {
+                name: '指标',
+                type: 'gauge',
+                min: 0,
+                max: 1000,
+                // 分割段数，默认为5
+                splitNumber: 10,
+                radius: '68%',
+                // 仪表位置
+                center: ["50%", "60%"],
+                // 轴样式
+                axisLine: {
+                    // 属性lineStyle控制线条样式
+                    lineStyle: {
+                        // 颜色
+                        color: [[0.2, '#228b22'], [0.8, '#48b'], [1, '#ff4500']],
+                        // 宽度
+                        width: 2,
+                        // 发光
+                        shadowColor: '#fff',
+                        // 扩散
+                        shadowBlur: 10
+                    }
+                },
+                // 坐标轴内线
+                axisTick: {
+                    splitNumber: 5,
+                    length: 6,
+                    lineStyle: {
+                        color: 'auto'
+                    }
+                },
+                // 指针数值不显示
+                axisLabel: {
+                    show: false
+                },
+                splitLine: {
+                    length: 2,
+                    lineStyle: {
+                        width: 2,
+                        color: '#fff',
+                        shadowColor: '#fff',
+                        shadowBlur: 10
+                    }
+                },
+                pointer: {
+                    width: 2
+                },
+                title: {
+                    offsetCenter: [0, '100%'],
+                    textStyle: {
+                        fontWeight: 'bolder',
+                        fontSize: 10,
+                        color: '#fff',
+                    }
+                },
+                detail: {
+                    formatter: '{value}',
+                    offsetCenter: [0, '30%'],
+                    textStyle: {
+                        fontWeight: 'bolder',
+                        fontSize: 14,
+                        color: '#fff'
+                    }
+                },
+                data: [{ value: 554, name: '下行输入欠功率告警' }]
+            }
+        ]
+    }
+    const option8 = {
+        tooltip: {
+            formatter: '{a} <br/>{b} : {c}%'
+        },
+        series: [
+            {
+                name: '指标',
+                type: 'gauge',
+                min: 0,
+                max: 1000,
+                // 分割段数，默认为5
+                splitNumber: 10,
+                radius: '68%',
+                // 仪表位置
+                center: ["50%", "60%"],
+                // 轴样式
+                axisLine: {
+                    // 属性lineStyle控制线条样式
+                    lineStyle: {
+                        // 颜色
+                        color: [[0.2, '#228b22'], [0.8, '#48b'], [1, '#ff4500']],
+                        // 宽度
+                        width: 2,
+                        // 发光
+                        shadowColor: '#fff',
+                        // 扩散
+                        shadowBlur: 10
+                    }
+                },
+                // 坐标轴内线
+                axisTick: {
+                    splitNumber: 5,
+                    length: 6,
+                    lineStyle: {
+                        color: 'auto'
+                    }
+                },
+                // 指针数值不显示
+                axisLabel: {
+                    show: false
+                },
+                splitLine: {
+                    length: 2,
+                    lineStyle: {
+                        width: 2,
+                        color: '#fff',
+                        shadowColor: '#fff',
+                        shadowBlur: 10
+                    }
+                },
+                pointer: {
+                    width: 2
+                },
+                title: {
+                    offsetCenter: [0, '100%'],
+                    textStyle: {
+                        fontWeight: 'bolder',
+                        fontSize: 10,
+                        color: '#fff',
+                    }
+                },
+                detail: {
+                    formatter: '{value}',
+                    offsetCenter: [0, '30%'],
+                    textStyle: {
+                        fontWeight: 'bolder',
+                        fontSize: 14,
+                        color: '#fff'
+                    }
+                },
+                data: [{ value: 46, name: '门禁告警' }]
+            }
+        ]
+    }
     index = 0;
     setInterval(function () {
         data = [600, 580, 620, 670, 550, 560, 600, 670, 700, 750, 610, 670, 723, 590, 780, 770, 790, 820, 870, 890, 920, 990];
-        option.series[0].data[0].value = data[index++ % data.length];
-        myChart1.setOption(option, true);
+        option1.series[0].data[0].value = data[index++ % data.length];
+        myChart1.setOption(option1, true);
     }, 2000);
     setInterval(function () {
         data = [300, 380, 420, 370, 450, 360, 500, 470, 500, 550, 410, 570, 423, 590, 480, 470, 540, 620, 570, 690, 770, 650];
-        option.series[0].data[0].value = data[index++ % data.length];
-        myChart2.setOption(option, true);
+        option2.series[0].data[0].value = data[index++ % data.length];
+        myChart2.setOption(option2, true);
     }, 2000);
     setInterval(function () {
         data = [40, 88, 267, 100, 55, 65, 178, 82, 30, 66, 76, 67, 45, 79, 89, 90, 200, 120, 300, 230, 56, 70];
-        option.series[0].data[0].value = data[index++ % data.length];
-        myChart3.setOption(option, true);
+        option3.series[0].data[0].value = data[index++ % data.length];
+        myChart3.setOption(option3, true);
     }, 2000);
     setInterval(function () {
         data = [600, 240, 300, 278, 330, 380, 440, 670, 500, 559, 340, 400, 278, 389, 456, 290, 390, 400, 450, 470, 700, 720];
-        option.series[0].data[0].value = data[index++ % data.length];
-        myChart4.setOption(option, true);
+        option4.series[0].data[0].value = data[index++ % data.length];
+        myChart4.setOption(option4, true);
     }, 2000);
     setInterval(function () {
         data = [100, 180, 220, 320, 450, 160, 200, 270, 300, 450, 610, 270, 323, 490, 320, 370, 490, 520, 670, 700, 720, 890];
-        option.series[0].data[0].value = data[index++ % data.length];
-        myChart5.setOption(option, true);
+        option5.series[0].data[0].value = data[index++ % data.length];
+        myChart5.setOption(option5, true);
     }, 2000);
     setInterval(function () {
         data = [20, 180, 220, 170, 50, 90, 100, 180, 300, 150, 210, 170, 50, 70, 110, 77, 59, 30, 50, 190, 210, 390];
-        option.series[0].data[0].value = data[index++ % data.length];
-        myChart6.setOption(option, true);
+        option6.series[0].data[0].value = data[index++ % data.length];
+        myChart6.setOption(option6, true);
     }, 2000);
     setInterval(function () {
         data = [600, 580, 700, 770, 850, 960, 500, 670, 700, 450, 670, 470, 780, 490, 520, 600, 690, 700, 750, 870, 670, 800];
-        option.series[0].data[0].value = data[index++ % data.length];
-        myChart7.setOption(option, true);
+        option7.series[0].data[0].value = data[index++ % data.length];
+        myChart7.setOption(option7, true);
     }, 2000);
     setInterval(function () {
         data = [10, 230, 320, 170, 55, 300, 400, 67, 100, 150, 210, 370, 423, 90, 180, 270, 390, 420, 70, 190, 220, 390];
-        option.series[0].data[0].value = data[index++ % data.length];
-        myChart8.setOption(option, true);
+        option8.series[0].data[0].value = data[index++ % data.length];
+        myChart8.setOption(option8, true);
     }, 2000);
-    myChart1.setOption(option)
-    myChart2.setOption(option)
-    myChart3.setOption(option)
-    myChart4.setOption(option)
-    myChart5.setOption(option)
-    myChart6.setOption(option)
-    myChart7.setOption(option)
-    myChart8.setOption(option)
+    myChart1.setOption(option1)
+    myChart2.setOption(option2)
+    myChart3.setOption(option3)
+    myChart4.setOption(option4)
+    myChart5.setOption(option5)
+    myChart6.setOption(option6)
+    myChart7.setOption(option7)
+    myChart8.setOption(option8)
 }
 maintain()
 
@@ -300,6 +836,10 @@ function faultDiagnosis() {
         ]
     };
     myChart.setOption(option)
+
+    window.addEventListener("resize", function () {
+        myChart.resize();
+    });
 }
 faultDiagnosis()
 
@@ -400,6 +940,10 @@ function desiagn() {
         ]
     };
     myChart.setOption(option)
+
+    window.addEventListener("resize", function () {
+        myChart.resize();
+    });
 }
 desiagn()
 
@@ -493,6 +1037,10 @@ function distribute() {
         color: ['#FF4949', '#FFA74D', '#77cd63', '#44AFF0',],
     };
     myChart.setOption(option)
+
+    window.addEventListener("resize", function () {
+        myChart.resize();
+    });
 }
 distribute()
 
@@ -558,6 +1106,10 @@ function statistics() {
         color: '#38b3f1'
     };
     myChart.setOption(option)
+
+    window.addEventListener("resize", function () {
+        myChart.resize();
+    });
 }
 statistics()
 
@@ -656,8 +1208,6 @@ function map() {
         myChart.resize();
     });
 }
-
-
 map()
 
 // 无线网络大数据采集终端/模块--监控点  现网规模
@@ -715,6 +1265,10 @@ function netWork() {
         }
     };
     myChart.setOption(option)
+
+    window.addEventListener("resize", function () {
+        myChart.resize();
+    });
 }
 netWork()
 
@@ -798,5 +1352,9 @@ function schedule() {
         ]
     }
     myChart.setOption(option)
+
+    window.addEventListener("resize", function () {
+        myChart.resize();
+    });
 }
 schedule()
