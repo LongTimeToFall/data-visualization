@@ -241,14 +241,57 @@ body {
     height: 100%;
 }
 
+/* 表单 */
 .form-center {
     width: 100%;
-    height: 22%;
+    height: 24%;
 }
 
+.t_btn8 {
+    width: 100%;
+    height: 50%;
+}
+
+.centertable {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.centerdata-th {
+    font-size: 15px;
+    font-weight: 600;
+    color: #61d2f7;
+    text-align: center;
+    white-space: nowrap;
+    padding: 5px 20px;
+}
+
+.centertable-td>td {
+    color: #fff;
+    font-size: 12px;
+    text-align: center;
+    padding: 4px 8px;
+}
+
+.centertable-td2>td {
+    color: #fff;
+    font-size: 12px;
+    text-align: center;
+    padding: 8px;
+}
+
+/* 地图 */
 .map {
     width: 100%;
-    height: 56%;
+    height: 55%;
+}
+
+.cen {
+    width: 100%;
+    height: 21%;
+    position: relative;
+    justify-content: space-between;
 }
 
 .netWork {
@@ -267,13 +310,6 @@ body {
     width: 60%;
     height: 100%;
     /* background-color: skyblue; */
-}
-
-.cen {
-    width: 100%;
-    height: 16%;
-    position: relative;
-    justify-content: space-between;
 }
 
 /* 右上 */
@@ -319,47 +355,22 @@ body {
 }
 
 /* 表单 */
-.centertable {
-    width: 100%;
-    position: relative;
-}
-
-.centerdata-th {
-    font-size: 15px;
-    font-weight: 600;
-    color: #61d2f7;
-    text-align: center;
-    white-space: nowrap;
-    padding: 10px 20px;
-}
-
-.centertable-td>td {
-    color: #fff;
-    font-size: 12px;
-    text-align: center;
-    padding: 4px 8px;
-}
-
-.centertable-td2>td {
-    color: #fff;
-    font-size: 12px;
-    text-align: center;
-    padding: 8px;
-}
-
 #produce table td {
     text-align: center;
     border: 1px solid #069;
-    padding: 1% 0px;
+    height: 3%;
 }
 
 #produce {
     color: #B7E2FF;
-    margin-top: 20px;
+    padding-top: 2%;
+    width: 100%;
+    height: 100%;
 }
 
 #produce table {
     width: 100%;
+    height: 100%;
     font-size: 12px;
 }
 
